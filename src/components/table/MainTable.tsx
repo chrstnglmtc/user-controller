@@ -21,7 +21,7 @@ export default function MainTable() {
   };
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto w-full">
       <table className="table">
         {/* head */}
         <thead>

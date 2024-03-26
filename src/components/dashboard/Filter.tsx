@@ -9,11 +9,11 @@ export default function Filter() {
       <button
         id="dropdownDefault"
         onClick={() => setIsOpen(!isOpen)}
-        className="btn btn-neutral"
+        className="btn"
         type="button"
       >
         <svg
-          className={`w-4 h-4 ml-2 transition-transform ${
+          className={`w-4 h-4 transition-transform ${
             isOpen ? "rotate-180" : ""
           }`}
           aria-hidden="true"
