@@ -67,9 +67,9 @@ export const USERS_DATA = [
     {
         id: '5',
         image: 'https://source.unsplash.com/random/36x36',
-        userName: 'david_brown',
+        userName: 'david_brownings',
         firstName: 'David',
-        lastName: 'Brown',
+        lastName: 'Brownings',
         position: 'Design Engineer II',
         email: 'david.brown@example.com',
         businessUnit: '1st Dept',
