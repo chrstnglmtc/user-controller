@@ -8,7 +8,7 @@ const linkClasses = "flex items-center gap-2 font-light px-3 py-2 hover:bg-gray-
 
 export default function Sidebar() {
   return (
-    <div className="bg-gray-700 flex flex-col w-60 p-3">
+    <div className="bg-gray-700 flex flex-col w-60 h-auto p-3">
       <div className="flex items-center gap-2 px-1 py-3">
         <CommandLineIcon className="h-8 w-8 text-gray"/>
         <span className="text-lg text-gray">Control Center</span>

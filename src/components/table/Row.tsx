@@ -1,4 +1,6 @@
 import React from "react";
+import { TrashIcon } from "@heroicons/react/16/solid";
+import { PencilSquareIcon } from "@heroicons/react/16/solid";
 
 export default function Row({
   image,
@@ -8,6 +10,8 @@ export default function Row({
   position,
   department,
   businessUnit,
+  email,
+  created,
 }) {
   return (
     <tr>
@@ -30,13 +34,19 @@ export default function Row({
         </div>
       </td>
       <td>
-        {department}
+        {position}
         <br />
-        <span className="badge badge-ghost badge-sm">{position}</span>
+        <span className="badge badge-ghost badge-sm">
+        {department}</span>
       </td>
       <td>{businessUnit}</td>
-      <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+      <td>{email}</td>
+      <td>{created}</td>
+      <th> 
+        <div className="flex w-1/2 justify-between">
+            <TrashIcon className="h-4 w-4" />
+            <PencilSquareIcon className="h-4 w-4" />
+        </div>
       </th>
     </tr>
   );
