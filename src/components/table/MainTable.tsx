@@ -39,8 +39,8 @@ export default function MainTable() {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Position</th>
+              <th>Department</th>
               <th></th>
             </tr>
           </tfoot>
