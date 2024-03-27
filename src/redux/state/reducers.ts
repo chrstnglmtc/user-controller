@@ -1,9 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { loginWorker } from '../saga/loginSaga'; // Import your login worker saga
+import userSlice from './userState';
 
 const rootReducer = combineReducers({
-  login: loginWorker,
-  // Add more reducers as needed
+  user: userSlice,
 });
 
 export default rootReducer;

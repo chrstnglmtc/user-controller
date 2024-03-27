@@ -27,7 +27,7 @@ public class ControlcenterApplication {
   @Bean
   public FilterRegistrationBean<CorsFilter> corsFilter() {
     CorsConfiguration corsConfig = new CorsConfiguration();
-    corsConfig.addAllowedOrigin("http://localhost:3000"); // Replace with your allowed origin
+    corsConfig.addAllowedOrigin("http://localhost:5173"); // Replace with your allowed origin
     corsConfig.addAllowedMethod("*"); // Allow all HTTP methods
     corsConfig.addAllowedHeader("*"); // Allow all headers
     corsConfig.setAllowCredentials(true); // Allow sending credentials

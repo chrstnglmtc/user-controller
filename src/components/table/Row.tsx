@@ -3,15 +3,14 @@ import { TrashIcon } from "@heroicons/react/16/solid";
 import { PencilSquareIcon } from "@heroicons/react/16/solid";
 
 export default function Row({
-  image,
-  firstName,
-  lastName,
-  userName,
-  position,
-  department,
-  businessUnit,
-  email,
-  created,
+  empId,
+  username,
+  password,
+  positionId,
+  deptId,
+  sectionId,
+  statusCode,
+  imgSrc,
 }) {
   return (
     <tr>
@@ -24,24 +23,25 @@ export default function Row({
         <div className="flex items-center gap-3">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
-              <img src={image} alt={`${firstName} ${lastName}`} />
+              {/* Adjust the alt text */}
+              <img src={imgSrc} alt={username} />
             </div>
           </div>
           <div>
-            <div className="font-bold">{`${firstName} ${lastName}`}</div>
-            <div className="text-sm opacity-50">{userName}</div>
+            {/* Adjust the display */}
+            <div className="font-bold">{username}</div>
+            <div className="text-sm opacity-50">{empId}</div>
           </div>
         </div>
       </td>
       <td>
-        {position}
+        {/* Display positionId and deptId */}
+        {positionId}
         <br />
-        <span className="badge badge-ghost badge-sm">
-        {department}</span>
+        <span className="badge badge-ghost badge-sm">{deptId}</span>
       </td>
-      <td>{businessUnit}</td>
-      <td>{email}</td>
-      <td>{created}</td>
+      <td>{sectionId}</td>
+      <td>{statusCode}</td>
       <th> 
         <div className="flex w-1/2 justify-between">
             <TrashIcon className="h-4 w-4" />

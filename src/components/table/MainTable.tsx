@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Row from './Row';
-import { USERS_DATA } from '../lib/consts/search';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsersStart } from '../../redux/state/userState';
 
 const rowsPerPage = 5; // Number of rows to display per page
 
 export default function MainTable() {
+  const users = useSelector((state) => state.user.users);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsersStart());
+  }, [dispatch]);
+
+  console.log(users);
+
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(USERS_DATA.length / rowsPerPage);
+  const totalPages = Math.ceil(users.length / rowsPerPage);
   const startIndex = (currentPage - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const currentRows = USERS_DATA.slice(startIndex, endIndex);
+  const currentRows = users.slice(startIndex, endIndex);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -31,28 +41,28 @@ export default function MainTable() {
                 <input type="checkbox" className="checkbox" />
               </label>
             </th>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Department</th>
-            <th>Email</th>
-            <th>Created</th>
-            <th>Actions</th>
-            <th></th>
+            <th>Employee ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Position ID</th>
+            <th>Dept ID</th>
+            <th>Section ID</th>
+            <th>Status Code</th>
+            <th>Image</th>
           </tr>
         </thead>
         <tbody>
           {currentRows.map((user, index) => (
             <Row
               key={index}
-              image={user.image}
-              firstName={user.firstName}
-              lastName={user.lastName}
-              userName={user.userName}
-              position={user.position}
-              department={user.department}
-              businessUnit={user.businessUnit}
-              email={user.email}
-              created={user.created}
+              empId={user.emp_id}
+              username={user.username}
+              password={user.password}
+              positionId={user.position_id}
+              deptId={user.dept_id}
+              sectionId={user.section_id}
+              statusCode={user.status_code}
+              imgSrc={user.img_src}
             />
           ))}
         </tbody>
