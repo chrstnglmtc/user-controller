@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react';
 import Row from './Row';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsersStart } from '../../redux/state/userState';
+import { getUserDetailsStart } from '../../redux/state/userDetailState';
 
 const rowsPerPage = 5; // Number of rows to display per page
 
 export default function MainTable() {
   const users = useSelector((state) => state.user.users);
+  const userDetails = useSelector((state) => state.user.userDetails);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUsersStart());
+    dispatch(getUserDetailsStart());
   }, [dispatch]);
 
   console.log(users);
+  console.log(userDetails);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -52,7 +56,7 @@ export default function MainTable() {
           </tr>
         </thead>
         <tbody>
-          {currentRows.map((user, index) => (
+          {users.map((user, index) => (
             <Row
               key={index}
               empId={user.emp_id}
@@ -63,6 +67,9 @@ export default function MainTable() {
               sectionId={user.section_id}
               statusCode={user.status_code}
               imgSrc={user.img_src}
+              fistName={userDetails[user.position_id]?.fname}
+              lastName={userDetails[user.position_id]?.lname}
+              email={userDetails[user.position_id]?.email}
             />
           ))}
         </tbody>

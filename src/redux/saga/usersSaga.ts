@@ -1,6 +1,7 @@
 // usersSaga.js
 import { call, put, takeEvery } from "redux-saga/effects";
 import { getUsersStart, getUsersSuccess, getUsersFailure } from "../state/userState";
+import { getUserDetailsFailure, getUserDetailsSuccess } from "../state/userDetailState";
 
 function* fetchUsers() {
     try {
@@ -15,3 +16,5 @@ function* fetchUsers() {
 export function* watchGetUsers() {
     yield takeEvery(getUsersStart.type, fetchUsers);
 }
+
+

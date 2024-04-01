@@ -1,8 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { User } from "../types/user";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { User, UserDetails } from "../types/user";
+
 
 interface UserState {
   users: User[];
+  userDetails: Record<string, UserDetails>; 
   loading: boolean;
   error: string | null;
 }
@@ -11,6 +13,7 @@ export const userSlice = createSlice({
   name: "users",
   initialState: {
     users: [],
+    userDetails: {},
     loading: false,
     error: null,
   } as UserState,
@@ -19,11 +22,12 @@ export const userSlice = createSlice({
       state.loading = true;
       state.error = null;
     },
-    getUsersSuccess: (state, action) => {
+    getUsersSuccess: (state, action: PayloadAction<User[]>) => {
       state.loading = false;
       state.users = action.payload;
+      state.userDetails = {};
     },
-    getUsersFailure: (state, action) => {
+    getUsersFailure: (state, action: PayloadAction<User[]>) => {
       state.loading = false;
       state.error = action.payload;
     },

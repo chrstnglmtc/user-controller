@@ -9,4 +9,12 @@ export interface User {
     img_src: string;
 }
 
-export interface 
+export interface UserDetails {
+    pid: string;
+    emp_id: string;
+    fname: string;
+    lname: string;
+    mname: string;
+    email: string;
+    del_flag: string;
+}

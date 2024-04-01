@@ -37,18 +37,25 @@ public class PersonalInfoController {
     private ErrorHandler errorHandler;
 
     @GetMapping("/all")
-    public ResponseEntity<List<PersonalInfoOutput>> getAllPersonalInfo(HttpSession httpSession) {
-        // Check if the user is authenticated 
-        Boolean isAuthenticated = (Boolean) httpSession.getAttribute("isAuthenticated");
-        
-        if (isAuthenticated != null && isAuthenticated) {
-            // User is authenticated
-            return personalInfoService.getAllPersonalInfo();
-        } else {
-            // User is not authenticated
-            return ResponseEntity.status(401).body(new ArrayList<PersonalInfoOutput>());
+    public ResponseEntity<List<PersonalInfoOutput>> getAllPersonalInfo() {
+        return personalInfoService.getAllPersonalInfo();
+    }
+
+    @GetMapping("/{id}") // Change emp_id to id
+    public ResponseEntity<PersonalInfoOutput> getPersonalInfoByEmpId(@PathVariable String id) {
+        try {
+            PersonalInfoOutput personalInfo = personalInfoService.getPersonalInfoById(id);
+            if (personalInfo != null) {
+                return ResponseEntity.ok(personalInfo);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).build();
         }
     }
+    
+    
 
     @PostMapping("/add")
     public ResponseEntity<String> addPersonalInfo(@RequestBody PersonalInfoInput personalInfo, HttpSession httpSession) {

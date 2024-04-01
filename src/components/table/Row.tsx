@@ -11,6 +11,9 @@ export default function Row({
   sectionId,
   statusCode,
   imgSrc,
+  firstName,
+  lastName,
+  email
 }) {
   return (
     <tr>
@@ -42,6 +45,9 @@ export default function Row({
       </td>
       <td>{sectionId}</td>
       <td>{statusCode}</td>
+      <td>{firstName}</td>
+      <td>{lastName}</td>
+      <td>{email}</td>
       <th> 
         <div className="flex w-1/2 justify-between">
             <TrashIcon className="h-4 w-4" />
